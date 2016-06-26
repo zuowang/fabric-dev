@@ -1,0 +1,16 @@
+docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID=vp0 -e CORE_PEER_ADDRESSAUTODETECT=true -e CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN=pbft -e CORE_PBFT_GENERAL_MODE=batch -e CORE_LOGGING_LEVEL=CRITICAL  -e CORE_PEER_PROFILE_ENABLED=true -e CORE_PEER_PROFILE_ENABLED=true hyperledger/fabric-peer peer node start
+
+docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID=vp1 -e CORE_PEER_ADDRESSAUTODETECT=true -e CORE_PEER_DISCOVERY_ROOTNODE=172.17.0.2:30303 -e CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN=pbft -e CORE_PBFT_GENERAL_MODE=batch -e CORE_LOGGING_LEVEL=CRITICAL hyperledger/fabric-peer peer node start
+
+docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID=vp2 -e CORE_PEER_ADDRESSAUTODETECT=true -e CORE_PEER_DISCOVERY_ROOTNODE=172.17.0.2:30303 -e CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN=pbft -e CORE_PBFT_GENERAL_MODE=batch -e CORE_LOGGING_LEVEL=CRITICAL hyperledger/fabric-peer peer node start
+
+docker run --rm -it -e CORE_VM_ENDPOINT=http://172.17.0.1:2375 -e CORE_PEER_ID=vp3 -e CORE_PEER_ADDRESSAUTODETECT=true -e CORE_PEER_DISCOVERY_ROOTNODE=172.17.0.2:30303 -e CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN=pbft -e CORE_PBFT_GENERAL_MODE=batch -e CORE_LOGGING_LEVEL=CRITICAL hyperledger/fabric-peer peer node start
+
+
+ -e CORE_PEER_PROFILE_ENABLED=true 
+ 
+CORE_PEER_ADDRESS=172.17.0.2:30303 build/bin/peer chaincode deploy -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02 -c '{"Function":"init", "Args": ["a","1000000000000", "b", "0"]}' 
+
+CORE_PEER_ADDRESS=172.17.0.2:30303 build/bin/peer chaincode query -l golang -n 4c9eb45d4395ecf630296eddfe3a3cc49d8ee7a14a3fd0a9ce45ecb7a9420b1a6ab20f0e51198b70bcd904e16e874f72dde928ffe29fba429081217e925ff77f -c '{"Function": "query", "Args": ["a"]}'
+
+CORE_PEER_ADDRESS=172.17.0.2:30303 build/bin/peer chaincode invoke -n 4c9eb45d4395ecf630296eddfe3a3cc49d8ee7a14a3fd0a9ce45ecb7a9420b1a6ab20f0e51198b70bcd904e16e874f72dde928ffe29fba429081217e925ff77f -c '{"Function":"invoke", "Args": ["a","b","1"]}'
