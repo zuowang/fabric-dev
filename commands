@@ -14,3 +14,10 @@ CORE_PEER_ADDRESS=172.17.0.2:30303 build/bin/peer chaincode deploy -p github.com
 CORE_PEER_ADDRESS=172.17.0.2:30303 build/bin/peer chaincode query -l golang -n 4c9eb45d4395ecf630296eddfe3a3cc49d8ee7a14a3fd0a9ce45ecb7a9420b1a6ab20f0e51198b70bcd904e16e874f72dde928ffe29fba429081217e925ff77f -c '{"Function": "query", "Args": ["a"]}'
 
 CORE_PEER_ADDRESS=172.17.0.2:30303 build/bin/peer chaincode invoke -n 4c9eb45d4395ecf630296eddfe3a3cc49d8ee7a14a3fd0a9ce45ecb7a9420b1a6ab20f0e51198b70bcd904e16e874f72dde928ffe29fba429081217e925ff77f -c '{"Function":"invoke", "Args": ["a","b","1"]}'
+
+
+docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
+docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
+docker images|grep none|awk '{print $3 }'|xargs docker rmi
+docker images|grep dev-vp|awk '{print $3 }'|xargs docker rmi
+
