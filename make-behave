@@ -1,0 +1,7 @@
+pip install protobuf
+
+pip install grpcio
+
+pip uninstall protobuf
+
+pip uninstall grpcio
