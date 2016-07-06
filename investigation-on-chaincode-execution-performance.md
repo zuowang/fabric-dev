@@ -1,4 +1,5 @@
 As suggested by simon, and I am posting my investigation on chaincode execution performance here:
+
 (1) Modify TestExecuteInvokeTransaction in core/chaincode/exectransaction_test.go:534 ​It takes 20s to execute 10000 transactions on chaincode_example02​
 
     start := time.Now()
@@ -12,9 +13,12 @@ As suggested by simon, and I am posting my investigation on chaincode execution 
     fmt.Printf("total time: %d\n", elapse)
 
 (2) Modify Invoke in examples/chaincode/go/chaincode_example02/chaincode_example02.go:74 ​it takes 10s to execute 10000 empty transactions​
-func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
-  return nil, nil
-}(3) Modify TestExecuteInvokeTransaction in core/chaincode/exectransaction_test.go:534 ​It takes 0.14s to execute 10000 transactions on peer​
+
+    func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
+      return nil, nil
+    }
+
+(3) Modify TestExecuteInvokeTransaction in core/chaincode/exectransaction_test.go:534 ​It takes 0.14s to execute 10000 transactions on peer​
 
  
     start := time.Now()
