@@ -1,5 +1,7 @@
 # fabric-dev
 
+materials on fabric source code, chaincode development, disscusion on PRs.
+
 put some fabric matetial here
 
 
