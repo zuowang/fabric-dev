@@ -1,0 +1,7 @@
+
+simon
+5:39 PM options:
+1. yaml text, parsed on start. cons: viper tolerates misspelled keys.  i don't like it
+2. ini text, parsed on start. there are ini parsers that parse directly into config structs.
+3. $config text, parsed on network creation, into config struct.  struct stored as grpc bytestream, grpc unmarshal on start.
+4. $config text, parsed on network creation.  values are stored in separate keys, and individually parsed on startup.  seems fiddly.
