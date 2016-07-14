@@ -1,0 +1,37 @@
+
+simon
+7:47 PM so with a crude "rpc" implementation in C (no TLS), i get to 172k ops/s on my laptop
+7:48 just to get an upper bound
+7:48 so using grpc with go is 8% of this performance figure
+kostas
+7:48 PM Are yesterday's numbers w/o TLS as well?
+simon
+7:49 PM no
+7:50 these were go grpc with tls
+7:52 i don't know whether it is worth to hack in gnutls to see a performance difference
+simon
+8:56 PM 83k ops/sec with gnutls anon
+8:56 @kostas: happy? :slightly_smiling_face:
+vukolic
+9:07 PM ouch
+9:07 what is an op? still Bitcoin size? (edited)
+simon
+9:39 PM couple of bytes
+9:39 not much
+9:40 heh it dropped to 75k, probably because of thermal limiting
+9:42 vukolic: the size doesn't impact things much
+9:42 localhost bandwidth is not a problem
+vukolic
+9:46 PM so it is 1/latency of the thingy
+9:47 but 75k vs 15k is a lot
+simon
+9:56 PM well, one is C without any magic dispatch system
+simon
+10:14 PM with streaming rpc: ~13k ops/sec
+simon
+10:20 PM 38k ops/sec with streaming without pbft
+simon
+10:26 PM so go+streaming grpc = 1/2 performance of C
+10:26 which is fine
+vukolic
+11:37 PM ack (edited)
