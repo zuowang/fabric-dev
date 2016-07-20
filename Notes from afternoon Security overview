@@ -1,0 +1,27 @@
+First, I want to apologise for a misunderstanding. When I said I was taking "some" notes, I didn't mean that I would take a full set of notes that would reflect the whole session, and I didn't. Nonetheless, here is a best-effort summary based on notes I did take that I wanted to capture.
+
+Given that they are incomplete and probably inaccurate, perhaps we could discuss in Slack and if it makes sense I can transfer a summary to the wiki.
+
+Updates to protcol specification document
+
+I looked at the current protocol specification to refresh my memory while writing these notes, but from what I can tell, it is not quite consistent with the slides presented today (e.g., I do not see that there is an Attribute CA and the process seems somewhat different from what I recall from the slides; perhaps the slides presented today represent a more up-to-date state?).
+
+In any case, it was acknowledged upfront that the description needed some updates. I volunteered to help with feedback from the point of view of a mortal who might want to try to better understand the proposed architecture and its implications.
+
+Decentralizing an ECA (Enrolment Certificate Authority)
+
+I asked whether it was possible to decentralize the role of an ECA, so that its data could not be revealed by compromising a single entity. I might not have expressed this very clearly, and (I think) David initially thought that I was suggesting building an "ECA group" on top of the blockchain. Once I clarified that this was not my intention, David said it was standard cryptography to allow a set of nodes to cooperate to collectively play the role of the ECA without any one of them having data to compromise private information of enrolled users (I am paraphrasing from memory what I understood; David, please chime in if I've got this wrong).
+
+I asked whether it would make sense to generalize the specification to allow pluggable ECA functionality, similar to how consensus algorithms and other components are pluggable. David agreed that it might make sense.
+
+I pushed my luck to ask whether such a generalization might also accommodate hierarchical deterministic keys, as ChristopherA had been discussing earlier. I did not fully understand the response, but I think David indicated that there would be some problem with this approach. I asked whether this meant that users had to store secret keys for each transaction in case they needed to reveal them later, and David answered that this was not the case, and that users have to store only two secret keys.
+
+Implications of proposed architecture
+
+ChristopherA asked a question something like: "who can collude to do X"; X might have been "compromise user identity data" or similar. I didn't capture detailed answers to this question or to a followup one something like "what sets of nodes could be attacked to effect a DOS attack?".
+
+I think there was general agreement that it would be useful to document answers to a class of such questions, both so that the implications can be more widely understood and also so that the implications can be stated explicitly and validated by more people.
+
+In response to questions about how many of various kinds of entities there can be, I believe David answered that there can be multiple Enrolment CAs, multiple Attribute CAs, and/or multiple Transaction CAs, and multiple CA roots, and that any combination of the above makes sense.
+
+I hope this is of some use and apologies for omissions and mistakes.
