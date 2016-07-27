@@ -1,0 +1,13 @@
+go get -u github.com/kardianos/govendor
+
+cd $GOPATH/src/github.com/
+
+mkdir -p zuowang/chaincode-blacklist
+
+govendor init
+
+govendor fetch github.com/hyperledger/fabric
+
+govendor fetch github.com/op/go-logging
+
+vi chaincode_blacklist.go
